@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: multicontainer
+
+spec:
+  restartPolicy: Never
+  volumes:
+    - name: shared-area
+      emptyDir: {}
+     
+  containers:
+    - name:  node-app
+      image: 12345676700/node-app:latest
+      ports:
+      - containerPort: 3000
+
+    - name:  ubuntu
+      image: ubuntu:latest
+      ports:
+      - containerPort: 80
